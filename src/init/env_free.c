@@ -24,7 +24,7 @@ static void	free_list(t_node *head, int size)
 	t_node	*next;
 	int		i;
 
-	if (!head || size == 0)
+	if (head == NULL || size == 0)
 		return ;
 	curr = head;
 	i = 0;
