@@ -11,7 +11,7 @@ SRC = src/main.c \
       src/parse/arg_parser.c \
       src/parse/arg_validator.c \
       src/parse/str_converter.c \
-      src/parse/token_utils.c \
+      src/parse/arg_utils.c \
       src/stack/node_utils.c \
       src/stack/stack_metrics.c \
       src/stack/disorder_calc.c \
