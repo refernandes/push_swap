@@ -19,11 +19,11 @@ int	is_valid_number(const char *s)
 	i = 0;
 	if (s[i] == '-' || s[i] == '+')
 		i++;
-	if (!s[i])
+	if (s[i] == '\0')
 		return (0);
 	while (s[i])
 	{
-		if (!ft_isdigit(s[i]))
+		if (ft_isdigit(s[i]) == 0)
 			return (0);
 		i++;
 	}
@@ -35,7 +35,7 @@ int	is_duplicate(t_env *env, int val)
 	t_node	*curr;
 	int		i;
 
-	if (!env->a || env->size_a == 0)
+	if (env->a == NULL || env->size_a == 0)
 		return (0);
 	curr = env->a;
 	i = 0;

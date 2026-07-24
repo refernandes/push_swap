@@ -17,7 +17,7 @@ t_node	*create_node(int val)
 	t_node	*node;
 
 	node = (t_node *)malloc(sizeof(t_node));
-	if (!node)
+	if (node == NULL)
 		return (NULL);
 	node->value = val;
 	node->index = -1;
@@ -30,7 +30,7 @@ void	append_node(t_node **head, t_node *new_node)
 {
 	t_node	*tail;
 
-	if (!*head)
+	if (*head == NULL)
 	{
 		*head = new_node;
 		return ;

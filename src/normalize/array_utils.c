@@ -21,7 +21,7 @@ int	*stack_to_array(t_env *env)
 	if (env->size_a == 0)
 		return (NULL);
 	arr = (int *)malloc(sizeof(int) * env->size_a);
-	if (!arr)
+	if (arr == NULL)
 		print_error_and_exit(env);
 	curr = env->a;
 	i = 0;

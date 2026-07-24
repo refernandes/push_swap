@@ -43,7 +43,7 @@ void	print_benchmark(t_env *env)
 	int		frac_part;
 	double	pct;
 
-	if (!env->flags.bench)
+	if (env->flags.bench == 0)
 		return ;
 	pct = env->initial_disorder * 100.0;
 	int_part = (int)pct;

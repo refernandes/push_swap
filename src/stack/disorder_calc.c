@@ -19,7 +19,7 @@ double	calc_disorder(int *arr, int size)
 	int		i;
 	int		j;
 
-	if (!arr || size <= 1)
+	if (arr == NULL || size <= 1)
 		return (0.0);
 	inversions = 0;
 	max_inversions = (size * (size - 1)) / 2;

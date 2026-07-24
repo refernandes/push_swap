@@ -33,7 +33,7 @@ void	assign_indices(t_env *env)
 	int		i;
 
 	arr = stack_to_array(env);
-	if (!arr)
+	if (arr == NULL)
 		return ;
 	quicksort_array(arr, 0, env->size_a - 1);
 	curr = env->a;

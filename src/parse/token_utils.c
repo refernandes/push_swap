@@ -21,14 +21,14 @@ void	process_tokens(t_env *env, char **tokens)
 	j = 0;
 	while (tokens[j])
 	{
-		if (!is_valid_number(tokens[j]) || !safe_str_to_int(tokens[j], &val)
+		if (is_valid_number(tokens[j]) == 0 || safe_str_to_int(tokens[j], &val) == 0
 			|| is_duplicate(env, val))
 		{
 			free_tokens(tokens);
 			print_error_and_exit(env);
 		}
 		new_node = create_node(val);
-		if (!new_node)
+		if (new_node == NULL)
 		{
 			free_tokens(tokens);
 			print_error_and_exit(env);
@@ -44,7 +44,7 @@ void	free_tokens(char **tokens)
 {
 	int	i;
 
-	if (!tokens)
+	if (tokens == NULL)
 		return ;
 	i = 0;
 	while (tokens[i])
