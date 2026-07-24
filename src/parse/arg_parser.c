@@ -25,7 +25,7 @@ void	parse_input(t_env *env, int argc, char **argv)
 	while (i < argc)
 	{
 		tokens = ft_split(argv[i], ' ');
-		if (!tokens || !tokens[0])
+		if (tokens == NULL || tokens[0] == NULL)
 		{
 			free_tokens(tokens);
 			print_error_and_exit(env);
