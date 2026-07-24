@@ -39,13 +39,15 @@ static void	print_counts(t_env *env)
 
 void	print_benchmark(t_env *env)
 {
-	int	int_part;
-	int	frac_part;
+	int		int_part;
+	int		frac_part;
+	double	pct;
 
 	if (!env->flags.bench)
 		return ;
-	int_part = (int)env->initial_disorder;
-	frac_part = (int)((env->initial_disorder - int_part) * 100);
+	pct = env->initial_disorder * 100.0;
+	int_part = (int)pct;
+	frac_part = (int)((pct - int_part) * 100);
 	ft_putstr_fd("[bench] disorder:  ", 2);
 	ft_putnbr_fd(int_part, 2);
 	ft_putstr_fd(".", 2);

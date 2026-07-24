@@ -35,5 +35,5 @@ double	calc_disorder(int *arr, int size)
 		}
 		i++;
 	}
-	return (((double)inversions / max_inversions) * 100.0);
+	return ((double)inversions / max_inversions);
 }
