@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: refernan <refernan@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: refernan <refernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/04 07:52:31 by refernan          #+#    #+#             */
-/*   Updated: 2026/06/04 15:24:37 by refernan         ###   ########.fr       */
+/*   Updated: 2026/06/04 08:24:50 by refernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,9 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 	while (i < n)
 	{
 		if (d1[i] != d2[i])
+		{
 			return (d1[i] - d2[i]);
+		}
 		i++;
 	}
 	return (0);

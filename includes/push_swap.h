@@ -6,7 +6,7 @@
 /*   By: refernan <refernan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/15 20:40:17 by refernan          #+#    #+#             */
-/*   Updated: 2026/07/23 19:13:18 by refernan         ###   ########.fr       */
+/*   Updated: 2026/07/15 20:40:18 by refernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,10 @@ void	op_rrr(t_env *env);
 
 void	log_operation(t_env *env, const char *op_name);
 void	print_benchmark(t_env *env);
+
 void	sort_router(t_env *env);
+void	sort_three(t_env *env);
+void	sort_five(t_env *env);
 void	sort_simple(t_env *env);
 void	sort_chunk(t_env *env);
 void	sort_radix(t_env *env);

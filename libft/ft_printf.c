@@ -6,7 +6,7 @@
 /*   By: refernan <refernan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/12 20:47:27 by refernan          #+#    #+#             */
-/*   Updated: 2026/06/20 12:32:55 by refernan         ###   ########.fr       */
+/*   Updated: 2026/06/15 21:21:45 by refernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,5 +58,5 @@ static int	parser_format(va_list *args, char spec)
 		return (print_hex(va_arg(*args, unsigned int), spec));
 	if (spec == '%')
 		return (print_percent());
-	return (0);
+	return (-1);
 }

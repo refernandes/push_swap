@@ -6,7 +6,7 @@
 /*   By: refernan <refernan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/17 19:57:58 by refernan          #+#    #+#             */
-/*   Updated: 2026/07/23 20:13:00 by refernan         ###   ########.fr       */
+/*   Updated: 2026/07/17 19:57:58 by refernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,6 @@ static void	increment_stat(t_env *env, const char *op_name)
 void	log_operation(t_env *env, const char *op_name)
 {
 	increment_stat(env, op_name);
-	{
-		ft_putstr_fd((char *)op_name, 1);
-		ft_putstr_fd("\n", 1);
-	}
+	ft_putstr_fd((char *)op_name, 1);
+	ft_putstr_fd("\n", 1);
 }

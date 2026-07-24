@@ -6,7 +6,7 @@
 /*   By: refernan <refernan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/13 12:42:40 by refernan          #+#    #+#             */
-/*   Updated: 2026/06/20 12:48:11 by refernan         ###   ########.fr       */
+/*   Updated: 2026/06/15 21:21:50 by refernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,14 @@ int	print_nbr(int n)
 		return (print_str("-2147483648"));
 	if (n < 0)
 	{
-		count += print_char('-');
+		print_char('-');
+		count++;
 		n = -n;
 	}
 	if (n >= 10)
 		count += print_nbr(n / 10);
-	count += print_char((n % 10) + '0');
-	return (count);
+	print_char((n % 10) + '0');
+	return (count + 1);
 }
 
 int	print_unsigned(unsigned int n)
@@ -37,35 +38,22 @@ int	print_unsigned(unsigned int n)
 	count = 0;
 	if (n >= 10)
 		count += print_unsigned(n / 10);
-	count += print_char((n % 10) + '0');
-	return (count);
+	print_char((n % 10) + '0');
+	return (count + 1);
 }
 
-int	print_hex(unsigned long n, char spec)
+int	print_hex(unsigned int n, char str)
 {
 	int		count;
 	char	*base;
 
-	if (spec == 'x' || spec == 'p')
+	if (str == 'x')
 		base = "0123456789abcdef";
 	else
 		base = "0123456789ABCDEF";
 	count = 0;
 	if (n >= 16)
-		count += print_hex(n / 16, spec);
-	count += print_char(base[n % 16]);
-	return (count);
-}
-
-int	print_ptr(void *ptr)
-{
-	unsigned long	n;
-	int				count;
-
-	if (ptr == NULL)
-		return (print_str("(nil)"));
-	n = (unsigned long)ptr;
-	count = print_str("0x");
-	count += print_hex(n, 'p');
-	return (count);
+		count += print_hex(n / 16, str);
+	print_char(base[n % 16]);
+	return (count + 1);
 }

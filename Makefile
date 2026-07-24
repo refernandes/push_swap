@@ -25,6 +25,8 @@ SRC = src/main.c \
       src/log/ops_logger.c \
       src/log/bench_printer.c \
       src/sort/sort_router.c \
+      src/sort/sort_three.c \
+      src/sort/sort_five.c \
       src/sort/sort_simple.c \
       src/sort/sort_chunk.c \
       src/sort/sort_radix.c
