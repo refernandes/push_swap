@@ -52,10 +52,10 @@ void	op_pa(t_env *env)
 {
 	t_node	*node;
 
-	node = extract_first(&env->b, &env->size_b);
+	node = extract_first(&env->stack_b, &env->size_b);
 	if (node)
 	{
-		prepend_node(&env->a, node, &env->size_a);
+		prepend_node(&env->stack_a, node, &env->size_a);
 		log_operation(env, "pa");
 	}
 }
@@ -64,10 +64,10 @@ void	op_pb(t_env *env)
 {
 	t_node	*node;
 
-	node = extract_first(&env->a, &env->size_a);
+	node = extract_first(&env->stack_a, &env->size_a);
 	if (node)
 	{
-		prepend_node(&env->b, node, &env->size_b);
+		prepend_node(&env->stack_b, node, &env->size_b);
 		log_operation(env, "pb");
 	}
 }

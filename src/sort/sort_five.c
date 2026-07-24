@@ -19,7 +19,7 @@ static int	get_min_pos(t_env *env)
 	int		min_val;
 	t_node	*curr;
 
-	curr = env->a;
+	curr = env->stack_a;
 	min_val = curr->value;
 	pos = 0;
 	i = -1;

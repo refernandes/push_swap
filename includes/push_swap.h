@@ -28,15 +28,15 @@ typedef struct s_flags
 typedef struct s_node
 {
 	int				value;
-	int				index;
+	int				rank;
 	struct s_node	*prev;
 	struct s_node	*next;
 }	t_node;
 
 typedef struct s_env
 {
-	t_node		*a;
-	t_node		*b;
+	t_node		*stack_a;
+	t_node		*stack_b;
 	int			size_a;
 	int			size_b;
 	int			total_size;
@@ -66,19 +66,19 @@ void	parse_input(t_env *env, int argc, char **argv);
 int		is_valid_number(const char *s);
 int		is_duplicate(t_env *env, int val);
 int		safe_str_to_int(const char *s, int *out);
-void	process_tokens(t_env *env, char **tokens);
-void	free_tokens(char **tokens);
+void	process_arguments(t_env *env, char **args);
+void	free_arguments(char **args);
 
 t_node	*create_node(int val);
 void	append_node(t_node **head, t_node *new_node);
 int		is_stack_sorted(t_node *head, int size);
-int		get_max_index_pos(t_node *head, int size);
+int		get_max_rank_pos(t_node *head, int size);
 
 double	calc_disorder(int *arr, int size);
 
 int		*stack_to_array(t_env *env);
 void	quicksort_array(int *arr, int low, int high);
-void	assign_indices(t_env *env);
+void	normalize_stack(t_env *env);
 
 void	op_pa(t_env *env);
 void	op_pb(t_env *env);

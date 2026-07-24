@@ -20,19 +20,19 @@ static void	rotate_down(t_node **head, int size)
 
 void	op_rra(t_env *env)
 {
-	rotate_down(&env->a, env->size_a);
+	rotate_down(&env->stack_a, env->size_a);
 	log_operation(env, "rra");
 }
 
 void	op_rrb(t_env *env)
 {
-	rotate_down(&env->b, env->size_b);
+	rotate_down(&env->stack_b, env->size_b);
 	log_operation(env, "rrb");
 }
 
 void	op_rrr(t_env *env)
 {
-	rotate_down(&env->a, env->size_a);
-	rotate_down(&env->b, env->size_b);
+	rotate_down(&env->stack_a, env->size_a);
+	rotate_down(&env->stack_b, env->size_b);
 	log_operation(env, "rrr");
 }

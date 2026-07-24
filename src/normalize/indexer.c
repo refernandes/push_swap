@@ -26,7 +26,7 @@ static int	find_index(int *arr, int size, int value)
 	return (0);
 }
 
-void	assign_indices(t_env *env)
+void	normalize_stack(t_env *env)
 {
 	int		*arr;
 	t_node	*curr;
@@ -36,11 +36,11 @@ void	assign_indices(t_env *env)
 	if (arr == NULL)
 		return ;
 	quicksort_array(arr, 0, env->size_a - 1);
-	curr = env->a;
+	curr = env->stack_a;
 	i = 0;
 	while (i < env->size_a)
 	{
-		curr->index = find_index(arr, env->size_a, curr->value);
+		curr->rank = find_index(arr, env->size_a, curr->value);
 		curr = curr->next;
 		i++;
 	}

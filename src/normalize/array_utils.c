@@ -23,7 +23,7 @@ int	*stack_to_array(t_env *env)
 	arr = (int *)malloc(sizeof(int) * env->size_a);
 	if (arr == NULL)
 		print_error_and_exit(env);
-	curr = env->a;
+	curr = env->stack_a;
 	i = 0;
 	while (i < env->size_a)
 	{

@@ -26,13 +26,13 @@ static void	push_chunks_to_b(t_env *env, int chunk_sz)
 	pushed = 0;
 	while (env->size_a > 0)
 	{
-		if (env->a->index <= pushed)
+		if (env->stack_a->rank <= pushed)
 		{
 			op_pb(env);
 			op_rb(env);
 			pushed++;
 		}
-		else if (env->a->index <= pushed + chunk_sz)
+		else if (env->stack_a->rank <= pushed + chunk_sz)
 		{
 			op_pb(env);
 			pushed++;
@@ -46,7 +46,7 @@ static void	push_max_to_a(t_env *env)
 {
 	int	pos;
 
-	pos = get_max_index_pos(env->b, env->size_b);
+	pos = get_max_rank_pos(env->stack_b, env->size_b);
 	while (pos > 0 && pos <= env->size_b / 2)
 	{
 		op_rb(env);

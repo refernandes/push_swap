@@ -35,9 +35,9 @@ int	is_duplicate(t_env *env, int val)
 	t_node	*curr;
 	int		i;
 
-	if (env->a == NULL || env->size_a == 0)
+	if (env->stack_a == NULL || env->size_a == 0)
 		return (0);
-	curr = env->a;
+	curr = env->stack_a;
 	i = 0;
 	while (i < env->size_a)
 	{

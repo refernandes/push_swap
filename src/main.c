@@ -25,8 +25,8 @@ int	main(int argc, char **argv)
 	if (env.size_a == 0)
 		env_free_and_exit(&env, 0);
 	record_initial_disorder(&env);
-	assign_indices(&env);
-	if (is_stack_sorted(env.a, env.size_a) == 0)
+	normalize_stack(&env);
+	if (is_stack_sorted(env.stack_a, env.size_a) == 0)
 		sort_router(&env);
 	print_benchmark(&env);
 	env_free_and_exit(&env, 0);

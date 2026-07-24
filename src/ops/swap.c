@@ -32,19 +32,19 @@ static void	swap_first_two(t_node **head, int size)
 
 void	op_sa(t_env *env)
 {
-	swap_first_two(&env->a, env->size_a);
+	swap_first_two(&env->stack_a, env->size_a);
 	log_operation(env, "sa");
 }
 
 void	op_sb(t_env *env)
 {
-	swap_first_two(&env->b, env->size_b);
+	swap_first_two(&env->stack_b, env->size_b);
 	log_operation(env, "sb");
 }
 
 void	op_ss(t_env *env)
 {
-	swap_first_two(&env->a, env->size_a);
-	swap_first_two(&env->b, env->size_b);
+	swap_first_two(&env->stack_a, env->size_a);
+	swap_first_two(&env->stack_b, env->size_b);
 	log_operation(env, "ss");
 }

@@ -41,8 +41,8 @@ void	env_free_and_exit(t_env *env, int code)
 {
 	if (env)
 	{
-		free_list(env->a, env->size_a);
-		free_list(env->b, env->size_b);
+		free_list(env->stack_a, env->size_a);
+		free_list(env->stack_b, env->size_b);
 	}
 	exit(code);
 }

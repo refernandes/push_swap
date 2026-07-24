@@ -31,7 +31,7 @@ int	is_stack_sorted(t_node *head, int size)
 	return (1);
 }
 
-int	get_max_index_pos(t_node *head, int size)
+int	get_max_rank_pos(t_node *head, int size)
 {
 	int		i;
 	int		pos;
@@ -41,14 +41,14 @@ int	get_max_index_pos(t_node *head, int size)
 	if (head == NULL || size == 0)
 		return (0);
 	curr = head;
-	max_val = curr->index;
+	max_val = curr->rank;
 	pos = 0;
 	i = 0;
 	while (i < size)
 	{
-		if (curr->index > max_val)
+		if (curr->rank > max_val)
 		{
-			max_val = curr->index;
+			max_val = curr->rank;
 			pos = i;
 		}
 		curr = curr->next;

@@ -12,45 +12,45 @@
 
 #include "push_swap.h"
 
-void	process_tokens(t_env *env, char **tokens)
+void	process_arguments(t_env *env, char **args)
 {
 	int		j;
 	int		val;
 	t_node	*new_node;
 
 	j = 0;
-	while (tokens[j])
+	while (args[j])
 	{
-		if (is_valid_number(tokens[j]) == 0 || safe_str_to_int(tokens[j], &val) == 0
+		if (is_valid_number(args[j]) == 0 || safe_str_to_int(args[j], &val) == 0
 			|| is_duplicate(env, val))
 		{
-			free_tokens(tokens);
+			free_arguments(args);
 			print_error_and_exit(env);
 		}
 		new_node = create_node(val);
 		if (new_node == NULL)
 		{
-			free_tokens(tokens);
+			free_arguments(args);
 			print_error_and_exit(env);
 		}
-		append_node(&env->a, new_node);
+		append_node(&env->stack_a, new_node);
 		env->size_a++;
 		env->total_size++;
 		j++;
 	}
 }
 
-void	free_tokens(char **tokens)
+void	free_arguments(char **args)
 {
 	int	i;
 
-	if (tokens == NULL)
+	if (args == NULL)
 		return ;
 	i = 0;
-	while (tokens[i])
+	while (args[i])
 	{
-		free(tokens[i]);
+		free(args[i]);
 		i++;
 	}
-	free(tokens);
+	free(args);
 }

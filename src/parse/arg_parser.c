@@ -17,21 +17,21 @@ static int	parse_flags(t_env *env, int argc, char **argv);
 void	parse_input(t_env *env, int argc, char **argv)
 {
 	int		i;
-	char	**tokens;
+	char	**args;
 
 	i = parse_flags(env, argc, argv);
 	if (i == argc)
 		env_free_and_exit(env, 0);
 	while (i < argc)
 	{
-		tokens = ft_split(argv[i], ' ');
-		if (tokens == NULL || tokens[0] == NULL)
+		args = ft_split(argv[i], ' ');
+		if (args == NULL || args[0] == NULL)
 		{
-			free_tokens(tokens);
+			free_arguments(args);
 			print_error_and_exit(env);
 		}
-		process_tokens(env, tokens);
-		free_tokens(tokens);
+		process_arguments(env, args);
+		free_arguments(args);
 		i++;
 	}
 }

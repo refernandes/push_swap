@@ -39,7 +39,7 @@ void	sort_radix(t_env *env)
 		j = 0;
 		while (j < size)
 		{
-			if (((env->a->index >> i) & 1) == 1)
+			if (((env->stack_a->rank >> i) & 1) == 1)
 				op_ra(env);
 			else
 				op_pb(env);

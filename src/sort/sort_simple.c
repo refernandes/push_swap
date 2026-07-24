@@ -19,15 +19,15 @@ static int	get_min_pos(t_env *env)
 	int		min_val;
 	t_node	*curr;
 
-	curr = env->a;
-	min_val = curr->index;
+	curr = env->stack_a;
+	min_val = curr->rank;
 	pos = 0;
 	i = -1;
 	while (++i < env->size_a)
 	{
-		if (curr->index < min_val)
+		if (curr->rank < min_val)
 		{
-			min_val = curr->index;
+			min_val = curr->rank;
 			pos = i;
 		}
 		curr = curr->next;

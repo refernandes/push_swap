@@ -20,7 +20,7 @@ t_node	*create_node(int val)
 	if (node == NULL)
 		return (NULL);
 	node->value = val;
-	node->index = -1;
+	node->rank = -1;
 	node->prev = node;
 	node->next = node;
 	return (node);
