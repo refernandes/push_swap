@@ -14,7 +14,7 @@
 
 static void	route_small(t_env *env)
 {
-	env->strategy_name = "Hardcoded";
+	env->strategy_name = "Simple";
 	env->strategy_comp = "O(1)";
 	if (env->total_size <= 3)
 		sort_three(env);
