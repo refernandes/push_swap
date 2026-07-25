@@ -22,8 +22,8 @@ static int	get_min_pos(t_env *env)
 	curr = env->stack_a;
 	min_val = curr->rank;
 	pos = 0;
-	i = -1;
-	while (++i < env->size_a)
+	i = 0;
+	while (i < env->size_a)
 	{
 		if (curr->rank < min_val)
 		{
@@ -31,6 +31,7 @@ static int	get_min_pos(t_env *env)
 			pos = i;
 		}
 		curr = curr->next;
+		i++;
 	}
 	return (pos);
 }
