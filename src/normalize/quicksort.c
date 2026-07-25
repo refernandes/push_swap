@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-static void	swap_ints(int *a, int *b)
+static void	array_swap(int *a, int *b)
 {
 	int	tmp;
 
@@ -21,36 +21,36 @@ static void	swap_ints(int *a, int *b)
 	*b = tmp;
 }
 
-static int	partition(int *arr, int low, int high)
+static int	array_partition(int *arr, int start, int end)
 {
 	int	pivot;
+	int	smaller_idx;
 	int	i;
-	int	j;
 
-	pivot = arr[high];
-	i = low - 1;
-	j = low;
-	while (j < high)
+	pivot = arr[end];
+	smaller_idx = start - 1;
+	i = start;
+	while (i < end)
 	{
-		if (arr[j] < pivot)
+		if (arr[i] < pivot)
 		{
-			i++;
-			swap_ints(&arr[i], &arr[j]);
+			smaller_idx++;
+			array_swap(&arr[smaller_idx], &arr[i]);
 		}
-		j++;
+		i++;
 	}
-	swap_ints(&arr[i + 1], &arr[high]);
-	return (i + 1);
+	array_swap(&arr[smaller_idx + 1], &arr[end]);
+	return (smaller_idx + 1);
 }
 
-void	quicksort_array(int *arr, int low, int high)
+void	sort_array_quick(int *arr, int start, int end)
 {
-	int	pi;
+	int	pivot_idx;
 
-	if (low < high)
+	if (start < end)
 	{
-		pi = partition(arr, low, high);
-		quicksort_array(arr, low, pi - 1);
-		quicksort_array(arr, pi + 1, high);
+		pivot_idx = array_partition(arr, start, end);
+		sort_array_quick(arr, start, pivot_idx - 1);
+		sort_array_quick(arr, pivot_idx + 1, end);
 	}
 }

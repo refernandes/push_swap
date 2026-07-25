@@ -35,7 +35,7 @@ void	normalize_stack(t_env *env)
 	arr = stack_to_array(env);
 	if (arr == NULL)
 		return ;
-	quicksort_array(arr, 0, env->size_a - 1);
+	sort_array_quick(arr, 0, env->size_a - 1);
 	curr = env->stack_a;
 	i = 0;
 	while (i < env->size_a)

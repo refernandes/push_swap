@@ -77,7 +77,7 @@ int		get_max_rank_pos(t_node *head, int size);
 double	calc_disorder(int *arr, int size);
 
 int		*stack_to_array(t_env *env);
-void	quicksort_array(int *arr, int low, int high);
+void	sort_array_quick(int *arr, int start, int end);
 void	normalize_stack(t_env *env);
 
 void	op_pa(t_env *env);
