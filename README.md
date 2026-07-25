@@ -1,4 +1,4 @@
-*This project has been created as part of the 42 curriculum by refernan, phkaway.*
+_This project has been created as part of the 42 curriculum by refernan, phkaway._
 
 ## Description
 Push_swap is a highly optimized data sorting algorithmic project. The primary goal is to sort a randomly generated list of integers in a stack (Stack A) in ascending order, utilizing an initially empty secondary stack (Stack B). The project enforces a severely restricted set of allowed operations (such as swapping top elements, pushing elements between stacks, and rotating or reverse rotating elements). The overarching objective is to achieve this sorted state using the absolute minimum number of operations possible, demonstrating a deep understanding of algorithmic time complexity, data structures, and memory management in C.
@@ -70,3 +70,7 @@ Artificial Intelligence (specifically Large Language Models) was used actively d
 1. **Architectural Brainstorming:** Discussing the pros and cons of Chunk-Sort versus Radix-Sort algorithms, ultimately leading to the decision to use Data Normalization combined with an Adaptive Router based on Disorder Ratio.
 2. **Memory Management Auditing:** Assisting in designing a global state `t_env` struct to ensure that all dynamically allocated memory could be easily tracked and freed in a single `free_env()` function, guaranteeing zero memory leaks during edge-case error handling.
 3. **Test Generation:** Generating Bash one-liners and Python scripts to run hundreds of random permutations (`shuf`) against the binary to strictly validate the operation count averages for the 100 and 500 number evaluation tiers.
+
+## Contributions
+- **refernan:** Focused primarily on the mechanical engine of the sorting operations (`sa`, `ra`, etc.), the global `t_env` context architecture, algorithm research, and the implementation of the Adaptive Router and Chunk Sort logic. Also managed the initial repository setup and Makefile configuration.
+- **phkaway:** Led the implementation of the strict Parsing and Validation layers (overflows, duplicates), the Quicksort Data Normalization process, memory leak prevention during edge cases, and the development of the binary Radix Sort for large inputs. Contributed extensively to the defensive programming design.
