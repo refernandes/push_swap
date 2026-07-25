@@ -24,23 +24,21 @@ static void	array_swap(int *a, int *b)
 static int	array_partition(int *arr, int start, int end)
 {
 	int	pivot;
-	int	smaller_idx;
 	int	i;
 
 	pivot = arr[end];
-	smaller_idx = start - 1;
-	i = start;
-	while (i < end)
+	i = start - 1;
+	while (start < end)
 	{
-		if (arr[i] < pivot)
+		if (arr[start] < pivot)
 		{
-			smaller_idx++;
-			array_swap(&arr[smaller_idx], &arr[i]);
+			i++;
+			array_swap(&arr[i], &arr[start]);
 		}
-		i++;
+		start++;
 	}
-	array_swap(&arr[smaller_idx + 1], &arr[end]);
-	return (smaller_idx + 1);
+	array_swap(&arr[i + 1], &arr[end]);
+	return (i + 1);
 }
 
 void	sort_array_quick(int *arr, int start, int end)
