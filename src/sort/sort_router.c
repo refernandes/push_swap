@@ -24,31 +24,34 @@ static void	route_small(t_env *env)
 
 static void	route_adaptive(t_env *env)
 {
-	if (env->initial_disorder < 15.0)
+	if (env->total_size <= 5)
 	{
-		env->strategy_name = "Simple";
+		route_small(env);
+		return ;
+	}
+	if (env->initial_disorder < 0.20)
+	{
+		env->strategy_name = "Adaptive";
 		env->strategy_comp = "O(n^2)";
 		sort_simple(env);
 	}
-	else if (env->initial_disorder > 85.0)
+	else if (env->initial_disorder >= 0.50)
 	{
-		env->strategy_name = "Radix";
-		env->strategy_comp = "O(n*k)";
+		env->strategy_name = "Adaptive";
+		env->strategy_comp = "O(n log n)";
 		sort_radix(env);
 	}
 	else
 	{
-		env->strategy_name = "Chunk";
-		env->strategy_comp = "O(n*sqrt(n))";
+		env->strategy_name = "Adaptive";
+		env->strategy_comp = "O(n sqrt(n))";
 		sort_chunk(env);
 	}
 }
 
 void	sort_router(t_env *env)
 {
-	if (env->total_size <= 5)
-		route_small(env);
-	else if (env->flags.simple)
+	if (env->flags.simple)
 	{
 		env->strategy_name = "Simple";
 		env->strategy_comp = "O(n^2)";
@@ -56,14 +59,14 @@ void	sort_router(t_env *env)
 	}
 	else if (env->flags.complex)
 	{
-		env->strategy_name = "Radix";
-		env->strategy_comp = "O(n*k)";
+		env->strategy_name = "Complex";
+		env->strategy_comp = "O(n log n)";
 		sort_radix(env);
 	}
 	else if (env->flags.medium)
 	{
-		env->strategy_name = "Chunk";
-		env->strategy_comp = "O(n*sqrt(n))";
+		env->strategy_name = "Medium";
+		env->strategy_comp = "O(n sqrt(n))";
 		sort_chunk(env);
 	}
 	else
