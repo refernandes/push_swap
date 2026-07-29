@@ -6,59 +6,77 @@
 /*   By: refernan <refernan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/18 09:14:12 by refernan          #+#    #+#             */
-/*   Updated: 2026/07/18 09:14:12 by refernan         ###   ########.fr       */
+/*   Updated: 2026/07/28 19:00:12 by refernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	get_min_pos(t_env *env)
+static int	find_min_index(t_env *env)
 {
 	int		i;
-	int		pos;
-	int		min_val;
+	int		min_index;
+	int		min_value;
 	t_node	*curr;
 
 	curr = env->stack_a;
-	min_val = curr->value;
-	pos = 0;
-	i = -1;
-	while (++i < env->size_a)
+	min_value = curr->value;
+	min_index = 0;
+	i = 0;
+	while (i < env->size_a)
 	{
-		if (curr->value < min_val)
+		if (curr->value < min_value)
 		{
-			min_val = curr->value;
-			pos = i;
+			min_value = curr->value;
+			min_index = i;
 		}
 		curr = curr->next;
+		i++;
 	}
-	return (pos);
+	return (min_index);
 }
 
-static void	push_min_to_b(t_env *env)
+static void	rotate_min_to_top(t_env *env, int min_index)
 {
-	int	pos;
+	int	half;
 
-	pos = get_min_pos(env);
-	while (pos > 0 && pos <= env->size_a / 2)
+	half = env->size_a / 2;
+	if (min_index <= half)
 	{
-		op_ra(env);
-		pos--;
+		while (min_index > 0)
+		{
+			op_ra(env);
+			min_index--;
+		}
 	}
-	while (pos > env->size_a / 2 && pos < env->size_a)
+	else
 	{
-		op_rra(env);
-		pos++;
+		while (min_index < env->size_a)
+		{
+			op_rra(env);
+			min_index++;
+		}
 	}
+}
+
+static void	push_smallest_to_b(t_env *env)
+{
+	int	min_index;
+
+	min_index = find_min_index(env);
+	rotate_min_to_top(env, min_index);
 	op_pb(env);
 }
 
 void	sort_five(t_env *env)
 {
 	if (env->size_a <= 3)
-		return (sort_three(env));
+	{
+		sort_three(env);
+		return ;
+	}
 	while (env->size_a > 3)
-		push_min_to_b(env);
+		push_smallest_to_b(env);
 	sort_three(env);
 	while (env->size_b > 0)
 		op_pa(env);

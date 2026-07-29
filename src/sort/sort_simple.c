@@ -6,58 +6,75 @@
 /*   By: refernan <refernan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/18 09:14:39 by refernan          #+#    #+#             */
-/*   Updated: 2026/07/18 09:14:39 by refernan         ###   ########.fr       */
+/*   Updated: 2026/07/28 15:13:38 by refernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	get_min_pos(t_env *env)
+static int  find_min_index(t_env *env)
 {
-	int		i;
-	int		pos;
-	int		min_val;
-	t_node	*curr;
+	int			i;
+	int			min_index;
+	int			min_rank;
+	t_node		*curr;
 
 	curr = env->stack_a;
-	min_val = curr->rank;
-	pos = 0;
+	min_rank = curr->rank;
+	min_index = 0;
 	i = 0;
+
 	while (i < env->size_a)
 	{
-		if (curr->rank < min_val)
+		if (curr->rank < min_rank)
 		{
-			min_val = curr->rank;
-			pos = i;
+			min_rank = curr->rank;
+			min_index = i;
 		}
 		curr = curr->next;
 		i++;
 	}
-	return (pos);
+	return (min_index);
 }
 
-static void	push_min_to_b(t_env *env)
+static void	rotate_min_to_top(t_env *env, int min_index)
 {
-	int	pos;
+	int	half;
 
-	pos = get_min_pos(env);
-	while (pos > 0 && pos <= env->size_a / 2)
+	half = env->size_a / 2;
+
+	if (min_index <= half)
 	{
-		op_ra(env);
-		pos--;
+		while (min_index > 0)
+		{
+			op_ra(env);
+			min_index--;
+		}
 	}
-	while (pos > env->size_a / 2 && pos < env->size_a)
+	else
 	{
-		op_rra(env);
-		pos++;
+		while (min_index < env->size_a)
+		{
+			op_rra(env);
+			min_index++;
+		}
 	}
+}
+
+static void	push_smallest_to_b(t_env *env)
+{
+	int	min_index;
+
+	min_index = find_min_index(env);
+	rotate_min_to_top(env, min_index);
 	op_pb(env);
 }
 
 void	sort_simple(t_env *env)
 {
 	while (env->size_a > 0)
-		push_min_to_b(env);
+		push_smallest_to_b(env);
+
 	while (env->size_b > 0)
 		op_pa(env);
 }

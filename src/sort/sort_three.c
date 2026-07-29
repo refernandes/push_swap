@@ -6,47 +6,58 @@
 /*   By: refernan <refernan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/18 09:14:48 by refernan          #+#    #+#             */
-/*   Updated: 2026/07/18 09:14:48 by refernan         ###   ########.fr       */
+/*   Updated: 2026/07/28 17:41:14 by refernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	do_ops(t_env *env, int mode)
+static void	get_values(t_env *env, int *top, int *middle, int *bottom)
 {
-	if (mode == 1)
+    *top = env->stack_a->value;
+    *middle = env->stack_a->next->value;
+    *bottom = env->stack_a->prev->value;
+}
+
+static void	handle_top_largest(t_env *env, int middle, int bottom)
+{
+	if (middle < bottom)
+		op_ra(env);
+	else
 	{
 		op_sa(env);
 		op_rra(env);
 	}
-	else if (mode == 2)
-	{
-		op_sa(env);
-		op_ra(env);
-	}
+}
+
+static void handle_middle_largest(t_env *env)
+{
+	op_sa(env);
+	op_ra(env);
 }
 
 void	sort_three(t_env *env)
 {
-	int	f;
-	int	s;
-	int	t;
+	int	top;
+	int	middle;
+	int	bottom;
 
 	if (env->size_a == 2 && env->stack_a->value > env->stack_a->next->value)
-		return (op_sa(env));
+	{
+		op_sa(env);
+		return ;
+	}
 	if (env->size_a != 3)
 		return ;
-	f = env->stack_a->value;
-	s = env->stack_a->next->value;
-	t = env->stack_a->prev->value;
-	if (f > s && s < t && f < t)
+
+	get_values(env, &top, &middle, &bottom);
+
+	if (top > middle && top > bottom)
+		handle_top_largest(env, middle, bottom);
+	else if (top > middle && top < bottom)
 		op_sa(env);
-	else if (f > s && s > t)
-		do_ops(env, 1);
-	else if (f > s && s < t && f > t)
-		op_ra(env);
-	else if (f < s && s > t && f < t)
-		do_ops(env, 2);
-	else if (f < s && s > t && f > t)
+	else if (top < middle && top > bottom)
 		op_rra(env);
+	else if (middle > bottom)
+		handle_middle_largest(env);
 }
