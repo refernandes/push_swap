@@ -6,13 +6,25 @@
 /*   By: refernan <refernan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/15 20:38:03 by refernan          #+#    #+#             */
-/*   Updated: 2026/07/17 14:47:13 by refernan         ###   ########.fr       */
+/*   Updated: 2026/08/01 05:09:48 by refernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	record_initial_disorder(t_env *env);
+static void	record_initial_disorder(t_env *env)
+{
+	int		*arr;
+	double	disorder_rate;
+
+	arr = stack_to_array(env);
+	if (arr)
+	{
+		disorder_rate = calc_disorder(arr, env->size_a);
+		env->initial_disorder = disorder_rate;
+		free(arr);
+	}
+}
 
 int	main(int argc, char **argv)
 {
@@ -31,18 +43,4 @@ int	main(int argc, char **argv)
 	print_benchmark(&env);
 	env_free_and_exit(&env, 0);
 	return (0);
-}
-
-static void	record_initial_disorder(t_env *env)
-{
-	int		*arr;
-	double	disorder_rate;
-
-	arr = stack_to_array(env);
-	if (arr)
-	{
-		disorder_rate = calc_disorder(arr, env->size_a);
-		env->initial_disorder = disorder_rate;
-		free(arr);
-	}
 }

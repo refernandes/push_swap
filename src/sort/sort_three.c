@@ -14,9 +14,9 @@
 
 static void	get_values(t_env *env, int *top, int *middle, int *bottom)
 {
-    *top = env->stack_a->value;
-    *middle = env->stack_a->next->value;
-    *bottom = env->stack_a->prev->value;
+	*top = env->stack_a->value;
+	*middle = env->stack_a->next->value;
+	*bottom = env->stack_a->prev->value;
 }
 
 static void	handle_top_largest(t_env *env, int middle, int bottom)
@@ -30,7 +30,7 @@ static void	handle_top_largest(t_env *env, int middle, int bottom)
 	}
 }
 
-static void handle_middle_largest(t_env *env)
+static void	handle_middle_largest(t_env *env)
 {
 	op_sa(env);
 	op_ra(env);
@@ -49,9 +49,7 @@ void	sort_three(t_env *env)
 	}
 	if (env->size_a != 3)
 		return ;
-
 	get_values(env, &top, &middle, &bottom);
-
 	if (top > middle && top > bottom)
 		handle_top_largest(env, middle, bottom);
 	else if (top > middle && top < bottom)

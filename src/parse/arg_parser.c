@@ -6,35 +6,11 @@
 /*   By: refernan <refernan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/17 19:53:10 by refernan          #+#    #+#             */
-/*   Updated: 2026/07/17 19:53:10 by refernan         ###   ########.fr       */
+/*   Updated: 2026/08/01 07:11:06 by refernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-static int	parse_flags(t_env *env, int argc, char **argv);
-
-void	parse_input(t_env *env, int argc, char **argv)
-{
-	int		i;
-	char	**args;
-
-	i = parse_flags(env, argc, argv);
-	if (i == argc)
-		env_free_and_exit(env, 0);
-	while (i < argc)
-	{
-		args = ft_split(argv[i], ' ');
-		if (args == NULL || args[0] == NULL)
-		{
-			free_arguments(args);
-			print_error_and_exit(env);
-		}
-		process_arguments(env, args);
-		free_arguments(args);
-		i++;
-	}
-}
 
 static int	parse_flags(t_env *env, int argc, char **argv)
 {
@@ -58,4 +34,26 @@ static int	parse_flags(t_env *env, int argc, char **argv)
 		i++;
 	}
 	return (i);
+}
+
+void	parse_input(t_env *env, int argc, char **argv)
+{
+	int		i;
+	char	**args;
+
+	i = parse_flags(env, argc, argv);
+	if (i == argc)
+		env_free_and_exit(env, 0);
+	while (i < argc)
+	{
+		args = ft_split(argv[i], ' ');
+		if (args == NULL || args[0] == NULL)
+		{
+			free_arguments(args);
+			print_error_and_exit(env);
+		}
+		process_arguments(env, args);
+		free_arguments(args);
+		i++;
+	}
 }

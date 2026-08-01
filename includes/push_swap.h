@@ -101,5 +101,8 @@ void	sort_five(t_env *env);
 void	sort_simple(t_env *env);
 void	sort_chunk(t_env *env);
 void	sort_radix(t_env *env);
+int		stack_find_min_index(t_env *env);
+void	stack_rotate_min_to_top(t_env *env, int min_index);
+void	stack_push_smallest_to_b(t_env *env);
 
 #endif

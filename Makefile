@@ -29,7 +29,8 @@ SRC = src/main.c \
       src/sort/sort_five.c \
       src/sort/sort_simple.c \
       src/sort/sort_chunk.c \
-      src/sort/sort_radix.c
+      src/sort/sort_radix.c \
+      src/sort/sort_utils.c
 
 OBJ = $(SRC:.c=.o)
 
