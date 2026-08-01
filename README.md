@@ -1,4 +1,4 @@
-_This project has been created as part of the 42 curriculum by refernan, phkaway._
+*This project has been created as part of the 42 curriculum by refernan, phkaway.*
 
 ## Description
 Push_swap is a highly optimized data sorting algorithmic project. The primary goal is to sort a randomly generated list of integers in a stack (Stack A) in ascending order, utilizing an initially empty secondary stack (Stack B). The project enforces a severely restricted set of allowed operations (such as swapping top elements, pushing elements between stacks, and rotating or reverse rotating elements). The overarching objective is to achieve this sorted state using the absolute minimum number of operations possible, demonstrating a deep understanding of algorithmic time complexity, data structures, and memory management in C.
